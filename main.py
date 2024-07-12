@@ -18,16 +18,20 @@ def show_board(values):
         print("____|____|____")
     print(f" {values[-3]}  | {values[-2]}  | {values[-1]} ")
     print("    |    |    ")
+    print("\n\n")
 
 
 def play(player):
     while True:
         choice = int(input("Enter your choice(1-9): "))
-        if game_values[choice - 1] == "X" or game_values[choice - 1] == "O":
-            print("Not a valid choice choose again.")
+        if choice < 9:
+            if game_values[choice - 1] == "X" or game_values[choice - 1] == "O":
+                print("Not a valid choice choose again.")
+            else:
+                game_values[choice - 1] = player
+                break
         else:
-            game_values[choice - 1] = player
-            break
+            print("Not a valid choice choose again.")
 
 
 def check(values, player_move):
@@ -47,8 +51,8 @@ def check(values, player_move):
 i = 1
 flag = 0
 while i < 10:
-    print(f"Player {player_1} is assigned: {player_choice[player_1]}")
-    print(f"Player {player_2} is assigned: {player_choice[player_2]}")
+    print(f"\n\nPlayer {player_1} is assigned: {player_choice[player_1]}")
+    print(f"Player {player_2} is assigned: {player_choice[player_2]}\n\n")
 
     if i % 2 == 0:
         player_to_play = player_1
